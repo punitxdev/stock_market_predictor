@@ -320,6 +320,11 @@
 
         <div class="container" id="results">
             <h2>Prediction Scope</h2>
+
+            <div id="graphContainer" style="display: none; text-align: center; margin-bottom: 1.5rem;">
+                <img id="predictionGraph" src="" alt="Stock Prediction Graph" style="max-width: 100%; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+            </div>
+
             <div class="result-card">
                 <div>
                     <div class="result-label">Current Close Price</div>
@@ -358,6 +363,7 @@
             } else {
                 results.style.display = 'none';
             }
+            document.getElementById('graphContainer').style.display = 'none';
             errorBox.style.display = 'none';
 
             try {
@@ -411,6 +417,12 @@
                     `;
                     prevPrice = pred;
                 });
+
+                if (data.graph_url) {
+                    const graphImg = document.getElementById('predictionGraph');
+                    graphImg.src = data.graph_url + '?t=' + new Date().getTime();
+                    document.getElementById('graphContainer').style.display = 'block';
+                }
 
                 if (results.style.display !== 'block') {
                     results.style.display = 'block';

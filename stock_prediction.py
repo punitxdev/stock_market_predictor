@@ -8,6 +8,9 @@ import joblib
 import os
 import threading
 import webbrowser
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 # Tell Flask to look for HTML files in the SAME directory! This keeps all files in one place.
 app = Flask(__name__, template_folder='.')
@@ -55,6 +58,36 @@ def predict():
         X_future = np.array(df.drop(['Prediction'], axis=1))[-future_days:]
         pred = model.predict(X_future)
         
+        # Plotting the graph
+        os.makedirs('static', exist_ok=True)
+        graph_path = f"static/{stock}_graph.png"
+        
+        plt.figure(figsize=(10, 5))
+        # Plot last 100 days of history
+        historical_data = df.tail(100)
+        plt.plot(historical_data.index, historical_data['Close'], label='Historical Close', color='#34d399', linewidth=2)
+        
+        # Plot predictions
+        future_dates = pd.date_range(start=df.index[-1] + pd.Timedelta(days=1), periods=future_days, freq='B')
+        plt.plot(future_dates, pred, label='Predicted Target', color='#a78bfa', linestyle='dashed', marker='o')
+        
+        plt.title(f"{stock} Price Forecast", color='white', fontsize=14, pad=10)
+        plt.xlabel("Date", color='white')
+        plt.ylabel("Price (USD)", color='white')
+        plt.legend(facecolor='#1e293b', edgecolor='#334155', labelcolor='white')
+        plt.grid(color='#334155', linestyle='-', linewidth=0.5, alpha=0.5)
+        
+        # Dark theme background for the graph
+        plt.gca().set_facecolor('#0f172a')
+        plt.gcf().set_facecolor('#0f172a')
+        plt.tick_params(colors='white', which='both')
+        
+        # Auto format date x-axis
+        plt.gcf().autofmt_xdate()
+        
+        plt.savefig(graph_path, bbox_inches='tight', dpi=120)
+        plt.close()
+        
         current_price = float(np.ravel(df['Close'].values[-1])[0])
         current_date = df.index[-1].strftime("%Y-%m-%d")
         
@@ -67,7 +100,8 @@ def predict():
             "ticker": stock,
             "current_price": current_price,
             "current_date": current_date,
-            "predictions": predictions
+            "predictions": predictions,
+            "graph_url": f"/{graph_path}"
         })
         
     except Exception as e:
@@ -76,5 +110,5 @@ def predict():
 if __name__ == "__main__":
     print("Initializing stock Predict Engine...")
     print("Opening browser automatically...")
-    threading.Timer(1.5, lambda: webbrowser.open("http://127.0.0.1:5000")).start()
-    app.run(debug=True, port=5000, use_reloader=False)
+    threading.Timer(1.5, lambda: webbrowser.open("http://127.0.0.1:5005")).start()
+    app.run(debug=True, port=5005, use_reloader=False)
