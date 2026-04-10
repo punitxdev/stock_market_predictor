@@ -1,8 +1,8 @@
 <div align="center">
 
-# 📈 Stock Market Predictor
+# Stock Market Predictor
 
-### _AI-powered stock price forecasting with Linear Regression_
+### AI-powered stock price forecasting using Linear Regression.
 
 <br>
 
@@ -14,7 +14,7 @@
 
 <br>
 
-A full-stack web app that fetches real-time stock data via **Yahoo Finance**, trains a **Linear Regression** model, and forecasts prices up to **30 days** into the future — complete with a dynamic dark-mode glassmorphism UI and matplotlib forecast graphs.
+A full-stack web application that fetches real-time baseline data via **Yahoo Finance**, trains a structural **Linear Regression** model, and forecasts price arrays up to **30 days** into the future. It includes a dynamic dark-mode interface and visually rendered `matplotlib` projection graphs.
 
 <br>
 
@@ -24,30 +24,30 @@ A full-stack web app that fetches real-time stock data via **Yahoo Finance**, tr
 
 <br>
 
-## 🎯 What It Does
+## Overview
 
 <table>
 <tr>
 <td width="50%">
 
-### 🤖 AI Prediction Engine
+### AI Prediction Engine
 
-- **Linear Regression** trained on historical Close prices
-- Fetches live data from **Yahoo Finance** (`yfinance`)
-- Forecasts **1–30 business days** ahead
-- **Smart caching** — trains once, saves as `.pkl`, reuses instantly
-- Auto-generates a **matplotlib forecast graph** (dark-themed)
+- Implements **Linear Regression** constraints compiled from historical sequential close metrics.
+- Maps continuous live pipeline data by pulling directly via **Yahoo Finance** (`yfinance`).
+- Compiles forecasts spanning **1–30 business days** effectively.
+- **Smart model caching**: Serializes optimized model via `.pkl` to guarantee fractional inference lag on repeat processing.
+- Automatically calculates and binds formatted **matplotlib projection graphs**.
 
 </td>
 <td width="50%">
 
-### 🎨 Premium Interface
+### Precision Interface
 
-- 🌑 **Dark glassmorphism** — frosted glass cards with animated blobs
-- 🎨 **Gradient text** — animated purple-to-green heading
-- 📊 **Side-by-side layout** — input form + results panel
-- 📈 **Trend indicators** — green ↗ for gains, red ↘ for drops
-- ⏳ **Smart loading states** — "Loading model..." vs "Predicting..."
+- **Dark layout design** combined with structured semantic frosted presentation views.
+- **Gradient text configurations** to designate headers structurally.
+- **Multi-panel rendering**: Dual input variable form against result-set panels.
+- **Trend indicators**: Structural UI designations indicating directional movement vectors.
+- **Asynchronous loading variables**: Dynamic UI state processing representations.
 
 </td>
 </tr>
@@ -55,108 +55,89 @@ A full-stack web app that fetches real-time stock data via **Yahoo Finance**, tr
 
 <br>
 
-## ✨ Key Features
+## Key Features
 
-- 🔄 **Any Stock Ticker** — Works with any valid Yahoo Finance symbol (AAPL, TSLA, GOOGL, NVDA, AMZN...)
-- 📉 **Forecast Graph** — Auto-generated matplotlib chart showing historical prices + predicted trajectory
-- 💾 **Model Caching** — Trained models saved as `.pkl` files for instant re-predictions
-- 🧮 **Day-by-Day Forecast** — Individual predictions with price deltas and trend direction
-- 🌐 **Auto-Opens Browser** — Flask server launches your browser automatically on startup
-- 📱 **Responsive** — Stacks cleanly on mobile devices
+- **Tethered Stock Input**: Parses universally recognized Yahoo Finance symbols efficiently (AAPL, TSLA, GOOGL, NVDA, etc).
+- **Forecast Graph Generator**: Procedural historical timeline graphs overlaying modeled predictive values.
+- **Instant Result Serializing**: `joblib` integrated caching configurations limiting iterative server lag on repeated models.
+- **Daily Trend Forecasting**: Calculated incremental shifts identifying short-duration vector mappings over the targeted temporal scope.
+- **Self-Initializing Instance**: The Flask logic naturally bootstraps system routing natively post-launch.
 
 <br>
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
-# Clone it
+# Clone the root repository package
 git clone https://github.com/punitxdev/stock_market_predictor.git
 cd stock_market_predictor
 
-# Install dependencies
+# Define core pipeline prerequisites
 pip install flask pandas numpy scikit-learn yfinance joblib matplotlib
 
-# Run it
+# Execute backend structural initialization
 python3 stock_prediction.py
 ```
 
-> App auto-opens at **http://127.0.0.1:5005** — enter a ticker, set forecast days, and hit predict!
+> The configured server executes operations via **http://127.0.0.1:5005**. Establish target ticker mapping factors to initialize execution.
 
 <br>
 
-## 🔮 How It Works
+## How It Works
 
-```
-1. Enter stock ticker (e.g. AAPL) + number of future days (1–30)
-2. Backend checks for cached .pkl model for that ticker
-3. If no cache → fetches data from Yahoo Finance → trains LinearRegression → saves .pkl
-4. Model predicts future close prices based on historical patterns
-5. Generates a dark-themed matplotlib graph (historical + predicted)
-6. Returns predictions with trend arrows (↗ gain / ↘ drop) per day
-```
-
-<br>
-
-## 📁 Project Structure
-
-```
-📦 stock_market_predictor
- ┣ 🐍 stock_prediction.py     → Flask server + Linear Regression model + graph generation
- ┣ 📄 index.html              → Full frontend UI (glassmorphism, inline CSS & JS)
- ┣ 📂 static/
- ┃   ┗ 📊 {TICKER}_graph.png  → Auto-generated forecast charts
- ┣ 🤖 {TICKER}_prediction.pkl → Cached trained models per stock
- ┗ 📝 README.md
+```text
+1. Define designated target array constraints (e.g. AAPL) combined with targeted sequential forecasting period spanning 1–30 parameters.
+2. Caching matrix scans server volumes mapping corresponding existing `.pkl` arrays.
+3. Upon Cache Miss → Core routine targets `yfinance` to parse index data → Computes variable `LinearRegression` → Serializes cache representation logic.
+4. Output arrays analyze input historical points forming mapped predictions.
+5. Dynamic rendering structure creates an equivalent plotting frame via `matplotlib`.
+6. Outputs return generated predictions merged with normalized sequential vector structures.
 ```
 
 <br>
 
-## 🛠️ Built With
+## Project Structure
 
-| Tech | Purpose |
+```text
+stock_market_predictor
+ ├── stock_prediction.py     → Primary application server, model parsing, and chart outputs
+ ├── index.html              → Display markup variables defining presentation constraints
+ ├── static/
+ │   └── {TICKER}_graph.png  → Target destination directory caching graphical plotting instances
+ ├── {TICKER}_prediction.pkl → Active stored models mapped via string designations
+ └── README.md
+```
+
+<br>
+
+## Built With
+
+| Technology | Purpose |
 |---|---|
-| **Python** | Backend language |
-| **Flask** | Web server & API endpoints |
-| **scikit-learn** | Linear Regression model |
-| **yfinance** | Real-time stock data from Yahoo Finance |
-| **Pandas / NumPy** | Data manipulation |
-| **Matplotlib** | Forecast graph generation |
-| **joblib** | Model serialization & caching |
-| **HTML5 / CSS3 / JS** | Glassmorphism frontend UI |
+| **Python** | Central application configuration and runtime |
+| **Flask** | Gateway network framework instances |
+| **scikit-learn** | Predictive ML architectural bounds |
+| **yfinance** | Baseline real-time mapping engine |
+| **Pandas / NumPy** | Mathematical logic rendering schemas |
+| **Matplotlib** | Visual charting structure logic |
+| **joblib** | Process management optimization arrays |
 
 <br>
 
-## ⚠️ Disclaimer
+## Disclaimer
 
-> This is a **machine learning demo for educational purposes only**. Stock predictions are inherently uncertain. **Do not** use this tool for actual financial decisions. Always consult a qualified financial advisor.
+> This project is defined as an **educational structural machine learning demo implementation**. It holds natural inherent variance structures characteristic of algorithmic models. Standard predictive results should **never** directly orient definitive real-world financial commitments. Leverage accredited advisory networks prior to financial actions.
 
 <br>
 
-## 🤝 Contributing
+## Contributing
 
-Contributions, issues, and feature requests are welcome!
+Process alterations mapping functional implementations are naturally welcome for iterative versions.
 
 ```bash
-# Fork → Branch → Commit → Push → PR
 git checkout -b feature/lstm-model
-git commit -m "Add LSTM prediction model"
+git commit -m "Initialize recurrent memory sequence mapping options"
 git push origin feature/lstm-model
 ```
 
 <br>
-
-## 📄 License
-
-Open source under the [MIT License](LICENSE).
-
-<br>
-
-<div align="center">
-
----
-
-**Made with ❤️ by [punitxdev](https://github.com/punitxdev)**
-
-_If you found this useful, give it a ⭐!_
-
-</div>
